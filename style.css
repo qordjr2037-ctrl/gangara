@@ -1,0 +1,352 @@
+/* 기본 리셋 & 변수 */
+:root {
+  --bg-dark: #0f0e12;
+  --bg-card: #1a1820;
+  --accent: #c9a227;
+  --accent-soft: #e8d48a;
+  --text: #e8e6ed;
+  --text-muted: #9a96a6;
+  --border: #2d2a35;
+  --font: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-dark);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main a,
+header a,
+footer a {
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* 헤더 */
+.site-header {
+  padding: 1.5rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* 목차 (TOC) */
+.toc {
+  background: rgba(15, 14, 18, 0.65);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.toc-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.toc-list {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+
+.toc-link {
+  display: inline-block;
+  padding: 0.35rem 0;
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+.toc-link:hover,
+.toc-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* 앵커 이동 시 여유 */
+section[id],
+h2[id],
+p[id] {
+  scroll-margin-top: 16px;
+}
+
+/* 전화 연결 (모바일 tel:) */
+.phone-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.65rem 1.25rem;
+  min-height: 48px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0f0e12;
+  background: linear-gradient(180deg, #e8d48a 0%, #c9a227 100%);
+  border-radius: 10px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.35);
+}
+
+.phone-cta:active {
+  transform: scale(0.98);
+  opacity: 0.95;
+}
+
+.phone-cta-wrap {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.phone-cta--block {
+  margin-top: 0;
+  width: 100%;
+  max-width: 320px;
+  font-size: 1.35rem;
+  min-height: 56px;
+}
+
+.phone-cta-hint {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.phone-cta--footer {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%;
+  font-size: 1.25rem;
+  min-height: 52px;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 모바일 하단 스티키 전화 버튼 */
+.sticky-call {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: rgba(15, 14, 18, 0.88);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  display: none;
+  z-index: 50;
+}
+
+.sticky-call__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(720px, calc(100% - 1.5rem));
+  margin: 0 auto;
+  min-height: 52px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #0f0e12;
+  background: linear-gradient(180deg, #e8d48a 0%, #c9a227 100%);
+  box-shadow: 0 10px 24px rgba(201, 162, 39, 0.25);
+}
+
+.sticky-call__btn:active {
+  transform: translateY(1px);
+  opacity: 0.95;
+}
+
+/* 히어로 이미지 - 풀 화면, 전체 노출 */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+}
+
+.hero-image-wrap {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* 본문 */
+.main-content {
+  flex: 1;
+  padding: 2.5rem 0 3rem;
+}
+
+.article {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--border);
+}
+
+.article-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.article-body p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.article-body p:last-child {
+  margin-bottom: 0;
+}
+
+.article-body strong {
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+.article-section {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-image-wrap {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.section-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-soft);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.article-section p {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.article-section strong {
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+/* 푸터 */
+.site-footer {
+  padding: 1.25rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.site-footer p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .hero,
+  .hero-image-wrap {
+    min-height: 100vh;
+  }
+
+  .main-content {
+    padding-bottom: 5.5rem;
+  }
+
+  .sticky-call {
+    display: block;
+  }
+
+  .article {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .article-title {
+    font-size: 1.2rem;
+  }
+
+  .article-body p {
+    font-size: 0.95rem;
+  }
+}
